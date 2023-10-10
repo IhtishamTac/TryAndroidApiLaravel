@@ -1,0 +1,93 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Android Tokped",
+        "description": "Rawur Krakatau",
+        "version": "1.0"
+    },
+    "paths": {
+        "/products": {
+            "get": {
+                "summary": "Get a list of products",
+                "description": "Display a listing of the resource.",
+                "operationId": "c1ff6f862214e1896c59cfe0491ce0e8",
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved products",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/{id}": {
+            "get": {
+                "summary": "Get a product by ID",
+                "description": "Display the specified resource.",
+                "operationId": "25d1f844c5dbbed34761f4f3b7333485",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved the product",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Product not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Product": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "nama_produk": {
+                        "type": "string"
+                    },
+                    "foro": {
+                        "type": "string"
+                    },
+                    "deskripsi": {
+                        "type": "string"
+                    },
+                    "harga": {
+                        "type": "string"
+                    },
+                    "rating": {
+                        "type": "number",
+                        "format": "float"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
